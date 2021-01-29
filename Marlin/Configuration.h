@@ -496,10 +496,15 @@
     //#define DEFAULT_Ki   0.6
     //#define DEFAULT_Kd  82.1
 
-      //@ SapphirePro 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
-    #define DEFAULT_Kp 15.36
-    #define DEFAULT_Ki 1.13
-    #define DEFAULT_Kd 52.03
+  //@ SapphirePro 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
+    //#define DEFAULT_Kp 15.36
+    //#define DEFAULT_Ki 1.13
+    //#define DEFAULT_Kd 52.03
+
+  //result of PID tuning for 200
+    #define DEFAULT_Kp 11.76
+    #define DEFAULT_Ki 0.66
+    #define DEFAULT_Kd 52.55
   #endif
 
   
@@ -544,17 +549,15 @@
   //#define DEFAULT_bedKi .023
   //#define DEFAULT_bedKd 305.4
 
-
-
   // SapphirePro 500W Keenovo SSR
   //#define DEFAULT_bedKp 95
   //#define DEFAULT_bedKi 0.7
   //#define DEFAULT_bedKd 210
 
-  // SapphirePro 24V Heater C5 S50
-  #define DEFAULT_bedKp 45.99
-  #define DEFAULT_bedKi 8.69
-  #define DEFAULT_bedKd 60.84
+  // SapphirePro 24V Heater for 80celc
+  #define DEFAULT_bedKp 48.51
+  #define DEFAULT_bedKi 9.17
+  #define DEFAULT_bedKd 171.16
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -754,7 +757,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.3, 1600, 437.13 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.3, 1580.25, 460.13 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 392.40 } // Calibrated stock extruder - 402 (Hemera stock 409, 392.40 - after calibration)
 
 /**
@@ -2400,7 +2403,7 @@
   // :[ 'AUTO', 'ST7735', 'ST7789', 'ST7796', 'R61505', 'ILI9328', 'ILI9341', 'ILI9488' ]
   #define TFT_DRIVER AUTO
 
-  // Interface. Enable one of the following options:
+  // Interface. Enable one of the following options:fstepps
   #define TFT_INTERFACE_FSMC
   //#define TFT_INTERFACE_SPI
 
@@ -2448,18 +2451,19 @@
 //
 #define TOUCH_SCREEN
 #if ENABLED(TOUCH_SCREEN)
-  #define BUTTON_DELAY_EDIT  50 // (ms) Button repeat delay for edit screens
+  #define BUTTON_DELAY_EDIT  100 // (ms) Button repeat delay for edit screens
   #define BUTTON_DELAY_MENU 250 // (ms) Button repeat delay for menus
 
-  #define TOUCH_SCREEN_CALIBRATION
+  //#define TOUCH_SCREEN_CALIBRATION
 
-  //#define TOUCH_CALIBRATION_X 12316
-  //#define TOUCH_CALIBRATION_Y -8981
-  //#define TOUCH_OFFSET_X        -43
-  //#define TOUCH_OFFSET_Y        257
+  #define TOUCH_CALIBRATION_X 16867
+  #define TOUCH_CALIBRATION_Y -11141
+  #define TOUCH_OFFSET_X        -23
+  #define TOUCH_OFFSET_Y        331
+  #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
   #if ENABLED(TFT_COLOR_UI)
-    //#define SINGLE_TOUCH_NAVIGATION
+    #define SINGLE_TOUCH_NAVIGATION
   #endif
 #endif
 
