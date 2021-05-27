@@ -57,14 +57,17 @@
 #define SPI_DEVICE                             2
 
 //
+// Servos
+//
+#define SERVO0_PIN                          PA8   // Enable BLTOUCH
+
+//
 // Limit Switches
 //
 #define X_STOP_PIN                          PA15
 #define Y_STOP_PIN                          PA12
 #define Z_MIN_PIN                           PA11
-//#define Z_MAX_PIN                           PC4
-
-
+#define Z_MAX_PIN                           PC4
 
 //
 // Steppers
@@ -85,9 +88,9 @@
 #define E0_STEP_PIN                         PD6
 #define E0_DIR_PIN                          PD3
 
-//#define E1_ENABLE_PIN                       PA3
-//#define E1_STEP_PIN                         PA6
-//#define E1_DIR_PIN                          PA1
+#define E1_ENABLE_PIN                       PA3
+#define E1_STEP_PIN                         PA6
+#define E1_DIR_PIN                          PA1
 
 //
 // Temperature Sensors
@@ -112,7 +115,7 @@
   #endif
 #endif
 #ifndef FAN_PIN
-  #define FAN_PIN                           PB1 //Original pin: PB1
+  #define FAN_PIN                           PB1   // FAN
 #endif
 #ifndef HEATER_BED_PIN
   #define HEATER_BED_PIN                    PA0
@@ -150,55 +153,14 @@
   #define FIL_RUNOUT2_PIN                   PE6
 #endif
 
-//#define SERVO0_PIN                          PA8   // Enable BLTOUCH support
-
 //#define LED_PIN                           PB2
-
-#if HAS_TMC220x
-  /**
-   * TMC2208/TMC2209 stepper drivers
-   */
-  //
-  // Software serial
-  //
-
-  #define TMC_BAUD_RATE 19200
-
-  #ifndef X_SERIAL_TX_PIN
-    #define X_SERIAL_TX_PIN  PA6 //E1_STEP_PIN
-  #endif
-  #ifndef X_SERIAL_RX_PIN
-    #define X_SERIAL_RX_PIN  PA1 //E1_DIR_PIN
-  #endif
-
-  #ifndef Y_SERIAL_TX_PIN
-    #define Y_SERIAL_TX_PIN  PA6 //E1_STEP_PIN
-  #endif
-  #ifndef Y_SERIAL_RX_PIN
-    #define Y_SERIAL_RX_PIN  PA1 //E1_DIR_PIN
-  #endif
-
-  #ifndef Z_SERIAL_TX_PIN
-    #define Z_SERIAL_TX_PIN  PA6 //E1_STEP_PIN
-  #endif
-  #ifndef Z_SERIAL_RX_PIN
-    #define Z_SERIAL_RX_PIN  PA1 //E1_DIR_PIN
-  #endif
-
-  #ifndef E0_SERIAL_TX_PIN
-    #define E0_SERIAL_TX_PIN PA6 //E1_STEP_PIN
-  #endif
-  #ifndef E0_SERIAL_RX_PIN
-    #define E0_SERIAL_RX_PIN PA1 //E1_DIR_PIN
-  #endif
-#endif
 
 //
 // SD Card
 //
-//#ifndef SDCARD_CONNECTION
-//  #define SDCARD_CONNECTION              ONBOARD
-//#endif
+#ifndef SDCARD_CONNECTION
+  #define SDCARD_CONNECTION              ONBOARD
+#endif
 
 #define SDIO_SUPPORT
 #define SDIO_CLOCK                       4500000  // 4.5 MHz
